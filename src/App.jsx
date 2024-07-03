@@ -12,8 +12,9 @@ export default function App() {
     if (allowNumber) str += "0123456789";
     if (allowCharacter) str += "!@#$%^&*(){};:?/"
     for (let index = 1; index <= length; index++) {
-      pass += str[Math.floor(Math.random() * str.length + 1)]
+      pass += str[Math.floor(Math.random() * str.length)]
     }
+    
     setpassword(pass)
   }, [length, allowCharacter, allowNumber]);
 
@@ -37,19 +38,19 @@ export default function App() {
   return (
     <div>
       <div className='bg-zinc-800 w-full h-screen flex justify-center'>
-        <div className='bg-zinc-600 w-3/5 max-h-48 mt-20 rounded-lg text-white flex flex-col items-center'>
+        <div className='bg-zinc-600 w-11/12 sm:w-5/6 md:w-3/5 max-h-96 sm:max-h-48 mt-20 rounded-lg text-white flex flex-col items-center'>
           <h2 className='text-3xl text-center my-4'>Password Generator</h2>
-          <div className='flex items-center overflow-hidden'>
-            <input ref={refFunction} className='w-[380px] px-5 font-medium text-2xl py-1 outline-none text-black rounded-s-xl' value={password} type='text' placeholder='' readOnly />
+          <div className='flex items-center '>
+            <input ref={refFunction} className='sm:w-[310px] w-[210px]  md:w-[380px] px-5 font-medium text-2xl py-1 outline-none text-black rounded-s-xl' value={password} type='text' placeholder='' readOnly />
             <button onClick={btnclick}  className='bg-blue-600 py-[6.6px] font-medium text-xl px-3 rounded-e-xl hover:bg-blue-500'>copy</button>
           </div>
-          <div className='mt-5 flex items-center'>
+          <div className='mt-5 flex sm:flex-row flex-col items-center'>
             <input type="range" name="" id="" value={length} onChange={(e) => setlength(e.target.value)} min={6} max={30} />
-            <label className='mx-2 font-medium'>Length: {length}</label>
+            <label className='sm:mx-2 my-1 font-medium'>Length: {length}</label>
             <input type="checkbox" name="" id="" defaultChecked={allowNumber} onChange={() => { setallowNum((prev) => !prev) }} />
-            <label className='mx-2 font-medium'>Numbers</label>
+            <label className='sm:mx-2 my-1 font-medium'>Numbers</label>
             <input type="checkbox" name="" id="" defaultChecked={allowCharacter} onChange={() => setallowChar((prev) => !prev)} />
-            <label className='mx-2 font-medium'>Characters</label>
+            <label className='sm:mx-2 my-1 font-medium'>Characters</label>
           </div>
 
         </div>
